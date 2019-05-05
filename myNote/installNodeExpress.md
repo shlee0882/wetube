@@ -26,13 +26,7 @@ $ npm install express
     - node_modules
     - package-lock.json
     - 구글에서 gitignore nodejs 검색 후 내용 복사해 붙여넣기
-
-```js
-
-[gitignore 정보](../.gitignore) 
-
-
-```
+    - [gitignore 정보](../.gitignore) 
 
 - .gitignore에 해당 내용을 추가하면 3개만 (index.js, package.json, .gitignore) 올리면 된다.
 - git clone 시 *npm install* 만 해주면 된다.
