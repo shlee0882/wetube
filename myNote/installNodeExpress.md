@@ -1,32 +1,21 @@
+### NodeJS와 Express 설치방법
 
-// require는 node module을 어딘가에서 가져온다.
-const express = require('express')
-const app = express();
-const PORT = 4000;
- 
-function handleListening (){
-    console.log(`Listening on: http://localhost:${PORT}`);
-}
+- node js 설치 후
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World')
-// })
- 
-app.listen(PORT, handleListening);
+```bash
+$ mkdir myFolder
+$ cd myFolder
+```
 
-/*
-
-### nodeJS와 express 설치방법
-
-1. node js 설치
-2. 자신의 작업폴더 생성 후 이동
-3. npm init
-4. npm install express
+```bash
+$ npm init
+$ npm install express
+```
 
 
-### nodeJS 프로젝트를 Git에 올리는 방법
+### NodeJS 프로젝트를 Git에 올리는 방법
 
-- git에 nodeJS 프로젝트를 올릴때 무거운 파일을 올릴 필요 없다. 
+- git에 NodeJS 프로젝트를 올릴때 무거운 파일을 올릴 필요 없다. 
 - npm init, npm install express 명령을 사용해 생성된
     package-lock.json, node_modules는 올리지 않아도 된다.
 
@@ -42,10 +31,10 @@ app.listen(PORT, handleListening);
 - git clone 시 *npm install* 만 해주면 된다.
 
 
-### nodejs 실행 방법
+### NodeJS 실행 방법
 
-```js
-    node index.js
+```bash
+$ node index.js
 ```
 
 - node index.js 명령을 입력하면 index.js가 실행된다.
@@ -59,7 +48,8 @@ app.listen(PORT, handleListening);
   }
 ```
 
+```bash
+$ npm start
+```
+
 - npm start 시 node index.js가 호출되며 실행된다.
-
-*/
-
