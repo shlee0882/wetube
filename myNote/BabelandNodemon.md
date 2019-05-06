@@ -30,8 +30,13 @@ import express from "express";
   }
 ```
 
-### @babel/core 설치, 
+### @babel/core 설치
+
+```bash
 npm install @babel/core
+```
+
+위에 수정한 es6 문법이 잘 설치 되었는지 확인위해 ```npm start ```
 
 ### nodemon 설치
 
