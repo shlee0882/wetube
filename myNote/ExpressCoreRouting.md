@@ -59,9 +59,9 @@ app.listen(PORT, handleListening);
 
 ```
 
-init.js는 export된 app.js를 import하고 서버를 여는 메소드를 호출한다.
+init.js는 export된 app.js를 import하고 서버를 여는 메소드를 호출한다.  
 import를 하면 app object를 모두 받아오는 것이다.  
-
+<br>
 ### Router 
 
 router는 많은 route들이 담긴 파일이다.
@@ -82,8 +82,9 @@ userRouter는 **default export, export** 가 있다.
 ```js
 export default app;
 ```
-default export 시 ```import router from "./router";``` 라고 명시하면 되지만  
-그냥 export 시   ``` import { userRouter } from "./router";``` 라고 명시해줘야한다.  
+
+import할떄 default export 시 ```import router from "./router";``` 라고 명시하면 되지만  
+import할때 그냥 export 시   ``` import { userRouter } from "./router";``` 라고 명시해줘야한다.  
 
 원하는 만큼의 router를 만들수 있다.  
 (userRouter, passwordRouter, commonRouter, videoRouter...) 
