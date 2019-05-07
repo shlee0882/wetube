@@ -86,25 +86,33 @@ app.listen(PORT, handleListen);
 ### globally middleware 사용
 
 ```js
-import express from 'express';
-
+import express from "express";
 const app = express();
-const PORT = 4000;
+const PORT = 5000;
 
-const handleListening = () => console.log(`Listening on: http://localhost:${PORT}`);
-const handleProfile = (req,res) => res.send("You are on my profile");
-const handleHome = (req, res) => res.send("Hello Home");
-const betweenHome = (req, res, next) => {
-    console.log("between");
+const handleListen = () => console.log(`http:localhost:${PORT} Server OPEN`);
+const handleDefault = (req, res) => res.send("Hello HOME");
+const handleJoin = (req, res) => res.send("Welcome JOIN");
+
+const middleware1 = (req, res, next) => {
+    console.log("middleware1");
     next();
 }
-app.use(betweenHome);
-app.get("/", handleHome);
-app.get("/profile", handleProfile);
-app.listen(PORT, handleListening);
+
+const middleware2 = (req, res, next) => {
+    console.log("middleware2");
+    next();
+}
+
+app.use(middleware1);
+app.use(middleware2);
+app.get('/', handleDefault);
+app.get('/join', handleJoin);
+
+app.listen(PORT, handleListen);
 ```
 
 app.use()를 사용하면 전역적으로 미들웨어를 실행할 수 있다.(top to bottom 실행으로 순서 중요)    
-홈 경로(/), /profile 경로에 접근 시 미들웨어 함수부터 실행되고 처리한 다음 response를 반환한다.  
+홈 경로(/), /join 경로에 접근 시 미들웨어 함수부터 실행되고 처리한 다음 response를 반환한다.  
 
 
