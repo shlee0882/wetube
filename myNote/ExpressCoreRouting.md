@@ -8,12 +8,15 @@ import express from 'express';
 import morgan from "morgan";
 import helmet from "helmet";
 ```
+
 express morgan helmet은 node_modules안에서 찾아온것이다.  
 
-그럼 현재 app.js를 export하고
-init.js를 생성하여 app.js를 import한다.
+기존의 1개로 구성되어 있는 app.js를 2개로 분리해서 만들어보자.
 
-app.js 코드 일부분을 옮겨 init.js에서 작성한다.
+app.js를 export하고    
+init.js를 생성하여 app.js를 import한다.  
+
+app.js 코드 일부분을 옮겨 init.js에서 작성한다.  
 
 
 ```js
@@ -41,7 +44,7 @@ export default app;
 
 ```
 
-app.js 파일에서 상수 app이 가지고 있는 모든 속성(cookieParser, bodyParser, helmet, morgan)을 export default 하고 있다.
+app.js 파일에서 상수 app이 가지고 있는 모든 속성(cookieParser, bodyParser ... )을 export default 하고 있다.
 
 
 ```js
@@ -57,7 +60,7 @@ app.listen(PORT, handleListening);
 
 ```
 
-init.js는 export된 app.js를 import하고 서버를 여는 메소드를 호출한다. 
+init.js는 export된 app.js를 import하고 서버를 여는 메소드를 호출한다.
 import를 하면 app object를 모두 받아오는 것이다.
 
 ### Router 
@@ -73,8 +76,8 @@ userRouter.get("/edit", (req,res) => res.send("user index"))
 userRouter.get("/", (req,res) => res.send("user index"))
 ```
 
-userRouter.js파일에 다음과 같이 작성하고 userRouter를 export하고 있다.
-userRouter는 default export, export가 있다.
+userRouter.js파일에 다음과 같이 작성하고 userRouter를 export하고 있다.  
+userRouter는 **default export, export** 가 있다.
 
 ```js
 export default app;
