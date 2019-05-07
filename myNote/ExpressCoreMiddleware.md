@@ -8,7 +8,7 @@ middleware는 우리가 어떤 경로로 라우팅할 때 최종 response 전에
 ### connection 함수
 
 우리는 express에서 홈 경로(/)로 route할때  
-response로 다음과 같이 console.log('Hello Home') 이라고 반환할수 있었다.
+response로 다음과 같이 html 화면에서 Hello Home 이라고 반환할수 있었다.
 
 ```js
 const handleHome = (req, res) => res.send("Hello Home");
@@ -45,7 +45,7 @@ app.get("/", betweenHome, handleHome);
 
 위 소스를 보면 홈경로로 들어왔을때 betweenHome 함수가 middleware가 되고  
 console.log를 찍고 next()를 통해 handleHome 함수로 가게된다.  
-handleHome 에서 response를 반환하고 종료된다.  
+handleHome 에서 response인 Hello Home을 화면에 반환하고 종료된다.  
 
 next()는 다음으로 진행할 수 있게 도와준다.
   
