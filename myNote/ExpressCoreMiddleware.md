@@ -53,6 +53,32 @@ next()는 다음으로 진행할 수 있게 도와준다.
 middleware를 중간에 여러개 놓을수 있어서 express서버는 양파와 같다.  
 middleware를 통해 유저의 로그인 여부 확인, 로그를 쌓을수도 있다.  
 
+```js
+import express from "express";
+const app = express();
+const PORT = 5000;
+
+const handleListen = () => console.log(`http:localhost:${PORT} Server OPEN`);
+const handleDefault = (req, res) => res.send("Hello HOME");
+const handleJoin = (req, res) => res.send("Welcome JOIN");
+
+const middleware1 = (req, res, next) => {
+    console.log("middleware1");
+    next();
+}
+
+const middleware2 = (req, res, next) => {
+    console.log("middleware2");
+    next();
+}
+
+app.get('/', middleware1, middleware2, handleDefault);
+app.get('/join', handleJoin);
+
+app.listen(PORT, handleListen);
+```
+
+
 하지만 middleware를 여러개 설정하고 여기저기서 쓰게 된다면  
 라우팅 할 경로 중간중간에 미들웨어 함수를 명시해줘야 하므로 어려움이 있다.  
 그래서 middleware를 globally 하게 사용할 수도 있다.  
