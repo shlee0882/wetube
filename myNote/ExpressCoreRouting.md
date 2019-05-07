@@ -7,14 +7,13 @@ js es6에서는 모듈이라는 것이 있다.
 import express from 'express';
 import morgan from "morgan";
 import helmet from "helmet";
-```
+```  
 
 express morgan helmet은 node_modules안에서 찾아온것이다.  
-
 기존의 1개로 구성되어 있는 app.js를 2개로 분리해서 만들어보자.
 
 app.js를 export하고    
-init.js를 생성하여 app.js를 import한다.  
+init.js를 생성하여 app.js를 init.js로 import한다.  
 
 app.js 코드 일부분을 옮겨 init.js에서 작성한다.  
 
@@ -61,13 +60,14 @@ app.listen(PORT, handleListening);
 ```
 
 init.js는 export된 app.js를 import하고 서버를 여는 메소드를 호출한다.
-import를 하면 app object를 모두 받아오는 것이다.
+import를 하면 app object를 모두 받아오는 것이다.  
 
 ### Router 
 
 router는 많은 route들이 담긴 파일이다.
 
 ```js
+// userRouter.js
 export const userRouter = express.Router();
 
 // 익명의 함수를 사용해 표현할수 있다.
