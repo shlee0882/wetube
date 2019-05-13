@@ -14,7 +14,7 @@ app.js 에서 불러오는 구조정리
 │   ├─ body-parser
 │   │	
 │   ├─ userRouter.js
-│   │	├─ express
+│   	├─ express
 │	│	├─ routes.js
 │	│	├─ userController.js
 │	│	│	├─ routes.js
@@ -80,6 +80,5 @@ app.js 에서 불러오는 구조정리
 │	│ app.use(routes.users, userRouter);
 │	│ app.use(routes.videos, videoRouter);
 │	│ 
-│	│ export default app;
-│	│ 
+│	│ export default app; 
 ```
