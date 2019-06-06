@@ -8,5 +8,6 @@ npm install passport passport-local
 ```bash
 
 npm install express-session
+connect mongo
 
 ```
