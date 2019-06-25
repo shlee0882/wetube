@@ -11,3 +11,9 @@ npm install express-session
 connect mongo
 
 ```
+
+```bash
+
+npm install passport-github
+
+```

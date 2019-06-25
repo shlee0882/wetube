@@ -2,6 +2,7 @@ import multer from "multer";
 import routes from "./routes";
 
 const multervideo = multer({ dest: "uploads/videos/" });
+const multerAvatar = multer({ dest: "uploads/avatars/" });
 
 export const localMiddleware = (req, res, next) => {
   // express locals에 변수를 저장하면 이 변수를 템플릿에서 사용할수 있다.
@@ -11,7 +12,7 @@ export const localMiddleware = (req, res, next) => {
   //   isAuthenticated: false,
   //   id: 1
   // };
-  res.locals.user = req.user || null;
+  res.locals.loggedUser = req.user || null;
   next();
 };
 
@@ -24,7 +25,7 @@ export const onlyPublic = (req, res, next) => {
 }
 
 export const onlyPrivate = (req, res, next) => {
-  if(req,user){
+  if(req.user){
     next();
   } else{
     res.redirect(routes.home);
@@ -32,3 +33,5 @@ export const onlyPrivate = (req, res, next) => {
 }
 
 export const uploadVideo = multervideo.single('videoFile');
+
+export const uploadAvatar = multerAvatar.single("avatar");
