@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import express from 'express';
 import morgan from "morgan";
 import helmet from "helmet";
@@ -6,12 +7,14 @@ import bodyParser from "body-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import MongoStore from "connect-mongo";
 import { localMiddleware } from './middleware';
 import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter";
 
 import "./passport";
 
@@ -23,9 +26,9 @@ console.log(process.env.COOKIE_SECRET);
 
 app.use(helmet());
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 // express.static은 directory에서 file을 보내주는 미들웨어이다.
-app.use("/uploads", express.static("uploads"));
-app.use("/static", express.static("static"));
+app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -46,5 +49,6 @@ app.use(localMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
