@@ -12,9 +12,7 @@ passport.use(
         {
             clientID: process.env.GH_ID,
             clientSecret: process.env.GH_SECRET,
-            callbackURL: process.env.PRODUCTION
-            ? `https://peaceful-citadel-17068.herokuapp.com${routes.githubCallback}`
-            : `http://localhost:40${routes.githubCallback}`
+            callbackURL: `https://peaceful-citadel-17068.herokuapp.com${routes.githubCallback}`
         },
     githubLoginCallback
     )
