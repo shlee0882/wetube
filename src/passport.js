@@ -13,7 +13,7 @@ passport.use(
             clientID: process.env.GH_ID,
             clientSecret: process.env.GH_SECRET,
             callbackURL: process.env.PRODUCTION
-            ? `https://frozen-cove-82686.herokuapp.com${routes.githubCallback}`
+            ? `https://shlee0882.herokuapp.com${routes.githubCallback}`
             : `http://localhost:40${routes.githubCallback}`
         },
     githubLoginCallback
