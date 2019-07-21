@@ -11,6 +11,7 @@ export const postJoin = async (req, res, next) => {
       body: { name, email, password, password2 }
     } = req;
     if (password !== password2) {
+      req.flash("error", "패스워드가 맞지 않습니다.");
       res.status(400);
       res.render("join", { pageTitle: "Join" });
     } else {
@@ -35,10 +36,15 @@ export const getLogin = (req, res) =>
 
 export const postLogin = passport.authenticate("local", {
     failureRedirect: routes.login,
-    successRedirect: routes.home
+    successRedirect: routes.home,
+    successFlash: "Welcome",
+    failureFlash: "로그인 할 수 없습니다. 이메일/패스워드를 확인해주세요."
 });
 
-export const githubLogin = passport.authenticate('github');
+export const githubLogin = passport.authenticate("github", {
+  successFlash: "Welcome",
+  failureFlash: "로그인 할 수 없습니다. 이메일/패스워드를 확인해주세요."
+});
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
   // console.log(accessToken, refreshToken, profile, cb);
@@ -69,7 +75,10 @@ export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home);
 }
 
-export const facebookLogin = passport.authenticate('facebook');
+export const facebookLogin = passport.authenticate("facebook", {
+  successFlash: "Welcome",
+  failureFlash: "로그인 할 수 없습니다. 이메일/패스워드를 확인해주세요."
+});
 
 export const facebookLoginCallback = async (_, __, profile, cb) => {
   const {
@@ -101,6 +110,7 @@ export const postFacebookLogin = (req, res) => {
 
 export const logout = (req, res) => {
     //To Do : Process Log out
+    req.flash("info", "로그아웃 되었습니다.");
     req.logout();
     res.redirect(routes.home);
 };
@@ -121,10 +131,10 @@ export const userDetail = async (req, res) => {
     console.log(user);
     res.render("userDetail", { pageTitle: 'User Detail', user});
   }catch(error){
+    req.flash("error", "유저를 찾을 수 없습니다.");
     res.redirect(routes.home);
   }
 }
-
 
 export const getEditProfile = (req, res) => 
   res.render("editProfile", { pageTitle: 'EditProfile'});
@@ -140,8 +150,10 @@ export const postEditProfile = async (req, res) => {
       email,
       avatarUrl: file ? file.location : req.user.avatarUrl
     });
+    req.flash("success", "프로필이 업데이트 되었습니다.");
     res.redirect(routes.me);
   } catch (error) {
+    req.flash("error", "프로필을 업데이트하지 못했습니다.");
     res.redirect(routes.editProfile);
   }
 };
@@ -160,6 +172,7 @@ export const postChangePassword = async(req, res) => {
   }else{
     try{
       if(newPassword !== newPassword1){
+        req.flash('error', "패스워드가 맞지 않습니다.");
         res.status(400);
         res.redirect(`/uesrs${routes.changePassword}`);
         return;
@@ -168,6 +181,7 @@ export const postChangePassword = async(req, res) => {
       res.redirect(routes.me);
     }catch(error){
       console.log(error);
+      req.flash("error", "패스워드를 변경할 수 없습니다.");
       res.status(400);
       res.redirect(`/uesrs${routes.changePassword}`);
     }
