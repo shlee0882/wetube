@@ -8,17 +8,15 @@ Cloning Youtube with JS and NodeJS
 4. [express core middleware 개념](/myNote/ExpressCoreMiddleware.md)
 5. [express core middleware 여러가지 설치](/myNote/ExpressCoreMiddlewareInstallNPM.md)
 6. [모듈사용과 Router 활용](/myNote/ExpressCoreRouting.md)
+7. [mvc패턴 및 pug 설치](/myNote/mvcpattern1.md)
+8. [mongodb](/myNote/mongoDB1.md)
+9. [webpack](/myNote/webpack.md)
+10. [authentication](/myNote/passport.md)
+11. [aws s3, mongolab, heroku](/myNote/awsS3-multer.md)
 
-### pages
+프로젝트 [전체구조](/myNote/directoryTree.md)
 
-- [ ] home
-- [x] Join
-- [x] Login
-- [x] Search
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload
-- [ ] Video Detail
-- [ ] Edit Video
+배포된 url : https://shlee0882.herokuapp.com/
+
+
 
